@@ -4,7 +4,7 @@ import express from 'express'
 import React from 'react'
 import { renderToString } from 'react-dom/server'
 
-import HelloWorld from '../client/components/helloWorld'
+import App from '../client/components/helloWorld'
 
 const app = express()
 
@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
   const template = fs.readFileSync(pathToHtml, 'utf8')
 
   // Inserts a rendered react component to the loaded template (server-side rendering).
-  const renderedHelloWorld = renderToString(<HelloWorld />)
+  const renderedHelloWorld = renderToString(<App/>)
   const page = template.replace('<!-- CONTENT -->', renderedHelloWorld)
 
   res.status(200).send(page)
